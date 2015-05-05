@@ -1,5 +1,5 @@
 class OrganisationController < ApplicationController
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def list
     @organisations = Organisation.all
@@ -23,7 +23,7 @@ class OrganisationController < ApplicationController
   def update
     @organisation = Organisation.find(params[:id])
 
-    if @organisation.update_attributes(params[:email])
+    if @organisation.update_attributes(params[:name])
       redirect_to :action => 'show', :id => @organisation
     else
       #@receipts = Receipt.find(:all)
@@ -37,7 +37,7 @@ class OrganisationController < ApplicationController
   end
 
   def create
-    @organisation = Organisation.new(params[:email])
+    @organisation = Organisation.new(organisation_params)
     if @organisation.save
       redirect_to :action => 'list'
     else
@@ -46,7 +46,14 @@ class OrganisationController < ApplicationController
     end
   end
 
-def show_receipts
-  @receipt = Receipt.find(params[:id])
-end
+  def show_receipts
+    @receipt = Receipt.find(params[:id])
+  end
+
+    private
+    
+    def organisation_params
+      params.require(:organisation).permit(:name)
+    end
+
 end
