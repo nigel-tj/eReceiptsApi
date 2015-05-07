@@ -1,5 +1,0 @@
-<h1>Add new organisation</h1>
-<%= form_for @organisation , :url => { :action => "create" }  do |f|  %>
-<%= f.text_field  :email %>
-<%= f.submit "ok", class: "btn btn-primary" %>
-<%end%>

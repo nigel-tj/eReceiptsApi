@@ -48,3 +48,11 @@ group :test do
 end
 
 gem "devise"
+
+group :assets do
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails'
+end
+
+gem 'will_paginate'
+
