@@ -212,11 +212,10 @@ DEPENDENCIES
   ffaker
   foreman
   i18n
-  jquery-rails
-  rack
   jquery-datatables-rails!
   jquery-rails
   jquery-ui-rails
+  rack
   rails (= 4.2.1)
   rake
   rspec-rails (~> 2.14)
