@@ -1,5 +1,8 @@
 <h1>Add new organisation</h1>
-<%= form_for @organisation , :url => { :action => "create" }  do |f|  %>
-<%= f.text_field  :name %>
-<%= f.submit "ok", class: "btn btn-primary" %>
-<%end%>
+
+<%= bootstrap_form_for(@organisation, :url => { :action => "create" }) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create" %>
+<% end %>
+
+
