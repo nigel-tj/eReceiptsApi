@@ -52,4 +52,13 @@ gem "rake"
 gem "rack"
 gem "i18n"
 
+group :assets do
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails'
+end
+
+gem 'will_paginate'
+gem 'bootstrap_form'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
 

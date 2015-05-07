@@ -2,10 +2,32 @@
 <p>There are no organisations currently in the system.</p>
 <% else %>
 <p>These are the current organisations in our system</p>
-<ul id="organisations">
-<% @organisations.each do |org| %>
-<li><%= link_to org.name, {:action => 'show', :id => org.id} -%></li>
 <% end %>
-</ul>
-<% end %>
+
 <p><%= link_to "Add new Organisation", {:action => 'new' }%></p>
+
+<table id="organisations"  class="table table-striped table-bordered table-condensed  table-hover">
+  <thead>
+    <tr><th>Name</th><th>Contact</th><th>UUID</th></tr>
+  </thead>
+  <tbody>
+    <% @organisations.each do |org| %>
+      <tr><td><%= link_to org.name, {:action => 'show', :id => org.id} -%></td> <td>dummy</td> <td>dummy</td> </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<script
+TableTools.DEFAULTS.sSwfPath ="http://cdn.datatables.net/tabletools/2.1.5/swf/copy_csv_xls_pdf.swf";>
+$('#organisations').dataTable({
+   //autoWidth: false
+  // pagingType: 'full_numbers',
+  // processing: true,
+  // serverSide: true,
+
+  // Optional, if you want full pagination controls.
+  // Check dataTables documentation to learn more about available options.
+  // http://datatables.net/reference/option/pagingType
+});
+</script>

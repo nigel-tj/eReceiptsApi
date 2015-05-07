@@ -22,7 +22,7 @@ module EReceiptsApi
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-
+    config.assets.precompile += %w(stylesheet.css)
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       g.test_framework :rspec, fixture: true
@@ -35,5 +35,6 @@ module EReceiptsApi
     end
 
   config.autoload_paths += %W(\#{config.root}/lib)
+   
   end
 end
