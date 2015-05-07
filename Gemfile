@@ -48,3 +48,8 @@ group :test do
 end
 
 gem "devise"
+gem "rake"
+gem "rack"
+gem "i18n"
+
+
