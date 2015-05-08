@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Api::V1::UsersController do
-  before(:each) { request.headers['Accept'] = "application/vnd.marketplace.v1" }
+  before(:each) { request.headers['Accept'] = "application/vnd.ereceipts.v1" }
   
   describe "GET #show" do
     before(:each) do
@@ -92,4 +92,15 @@ describe Api::V1::UsersController do
       it { should respond_with 422 }
     end
   end
+
+  describe "DELETE #destroy" do
+    before(:each) do
+      @user = FactoryGirl.create :user
+      delete :destroy, { id: @user.id }, format: :json
+    end
+    
+    it { should respond_with 204 }
+    
+  end
+
 end
