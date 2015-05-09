@@ -2,6 +2,8 @@
 
 <%= bootstrap_form_for(@organisation, :url => { :action => "create" }) do |f| %>
   <%= f.text_field :name %>
+  <%= f.text_field :email %>
+  <%= f.text_field :contact %>
   <%= f.submit "Create" %>
 <% end %>
 
