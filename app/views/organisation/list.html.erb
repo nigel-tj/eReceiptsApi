@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     <% @organisations.each do |org| %>
-      <tr><td><%= link_to org.name, {:action => 'show', :id => org.id} -%></td> <td>dummy</td> <td>dummy</td> </tr>
+      <tr><td><%= link_to org.name, {:action => 'show', :id => org.id} -%></td> <td><%= org.email -%></td> <td><%= org.contact -%></td> </tr>
     <% end %>
   </tbody>
 </table>

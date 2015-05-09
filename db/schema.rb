@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508100740) do
+ActiveRecord::Schema.define(version: 20150509101209) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,8 +34,10 @@ ActiveRecord::Schema.define(version: 20150508100740) do
   create_table "organisations", force: :cascade do |t|
     t.string   "name"
     t.text     "uuid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "email",      default: ""
+    t.string   "contact",    default: ""
   end
 
   create_table "organizations", force: :cascade do |t|
