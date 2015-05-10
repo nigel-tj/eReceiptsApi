@@ -1,1 +1,10 @@
-edit
+<h1>Edit organisation</h1>
+
+<%= bootstrap_form_for(@organisation, :url => { :action => "update" }) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :email %>
+  <%= f.text_field :contact %>
+  <%= f.submit "Edit" %>
+<% end %>
+
+

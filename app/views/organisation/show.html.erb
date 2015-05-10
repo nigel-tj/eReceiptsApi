@@ -1,23 +1,8 @@
-<table id="list-table"  class="table table-striped table-bordered table-condensed  table-hover">
-  <thead>
-    <tr><th>Name</th><th>Contact</th><th>UUID</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>test</td><td>073 700 1181</td><td>dfjsxvn.v878dfskf,mvnsdisdadl</td></tr>
-    <tr><td>test</td><td>073 700 1181</td><td>dfjsxvn.v878dfskf,mvnsdisdadl</td></tr>
-  </tbody>
-</table>
+<h1>Edit organisation</h1>
 
-<script
-TableTools.DEFAULTS.sSwfPath ="http://cdn.datatables.net/tabletools/2.1.5/swf/copy_csv_xls_pdf.swf";>
-$('#list-table').dataTable({
-   autoWidth: false
-  // pagingType: 'full_numbers',
-  // processing: true,
-  // serverSide: true,
-
-  // Optional, if you want full pagination controls.
-  // Check dataTables documentation to learn more about available options.
-  // http://datatables.net/reference/option/pagingType
-});
-</script>
+<%= bootstrap_form_for(@organisation, :url => { :action => "update" }) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :email %>
+  <%= f.text_field :contact %>
+  <%= f.submit "Edit" %>
+<% end %>
