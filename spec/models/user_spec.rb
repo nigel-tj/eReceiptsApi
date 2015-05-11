@@ -17,7 +17,9 @@ describe User do
   it { should validate_uniqueness_of(:email) }
   it { should validate_confirmation_of(:password) }
   it { should allow_value('example@domain.com').for(:email) }
-  
+
+  it { should have_many(:receipts) }  
+
   describe "#generate_authentication_token!" do
     it "generates a unique token" do
       Devise.stub(:friendly_token).and_return("auniquetoken123")
@@ -31,5 +33,21 @@ describe User do
       expect(@user.auth_token).not_to eql existing_user.auth_token
     end
   end
-  
+
+  describe "#receipts association" do
+    
+    before do
+      @user.save
+      3.times { FactoryGirl.create :receipt, user: @user }
+    end
+
+    it "destroys the associated receipts on self destruct" do
+      receipts = @user.receipts
+      @user.destroy
+      receipts.each do |receipt|
+        expect(Receipt.find(receipt)).to raise_error ActiveRecord::RecordNotFound
+      end
+    end
+  end
+
 end
