@@ -1,8 +1,10 @@
 FactoryGirl.define do
   factory :receipt do
-    receipt_number 22113300 #{ FFaker::Receipt.receipt_number }
+    id 1
+    receipt_number { 22113300 } 
     header {"Receipt header"}
     footer {"receit footer"}
+    
     user
   end
 end

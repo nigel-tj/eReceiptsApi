@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Receipt do
-  #let(:receipt) { FactoryGirl.build :receipt }
-  #subject { receipt }
+  let(:receipt) { FactoryGirl.build :receipt }
+  subject { receipt }
 
-  it { should respond_to(:header) }
+  it { should respond_to(:headebr) }
   it { should respond_to(:footer) }
   it { should respond_to(:receipt_number) }
   it { should respond_to(:user_id) }
