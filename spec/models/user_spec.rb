@@ -38,7 +38,7 @@ describe User do
     
     before do
       @user.save
-      3.times { FactoryGirl.create :receipt, user: @user }
+      3.times { FactoryGirl.create :receipt, user_id: @user.id }
     end
 
     it "destroys the associated receipts on self destruct" do

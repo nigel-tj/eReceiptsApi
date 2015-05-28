@@ -29,13 +29,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development do
+group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 1.3.5'
+  gem 'ffaker'
 end
    
 gem 'foreman'
@@ -43,7 +44,6 @@ gem 'foreman'
 group :test do
   gem "rspec-rails", "~> 2.14"
   gem "factory_girl_rails"
-  gem 'ffaker'
   gem "shoulda-matchers"
 end
 
@@ -60,5 +60,5 @@ end
 gem 'will_paginate'
 gem 'bootstrap_form'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-
-
+gem 'composite_primary_keys'
+gem 'activesupport'
