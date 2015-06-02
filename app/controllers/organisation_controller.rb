@@ -7,7 +7,7 @@ class OrganisationController < ApplicationController
 
   def show
     @organisation = Organisation.find(params[:id])
-    redirect_to :action => 'update', :id => @organisation
+    redirect_to :action => 'show', :id => @organisation.id
   end
 
   def new
@@ -15,15 +15,16 @@ class OrganisationController < ApplicationController
   end
 
   def edit
-    @organisation = Organisation.find(params[:id])
-    @receipts = Receipt.find(:all)
+    @organisation = Organisation.find_by_id(params[:id])
+    #redirect_to :action => 'show', :id => @organisation
+    #@receipts = Receipt.find(:all)
   end
 
   def update
-    @organisation = Organisation.find(params[:id])
+    @organisation = Organisation.find_by_id(params[:id])
 
     if @organisation.update_attributes(organisation_params)
-      redirect_to :action => 'show', :id => @organisation
+      redirect_to :action => 'list'
     else
       render :action => 'edit'
     end
@@ -50,7 +51,7 @@ class OrganisationController < ApplicationController
     private
     
     def organisation_params
-      params.require(:organisation).permit(:name, :email, :contact, :id)
+      params.require(:organisation).permit(:name, :email, :contact)
     end
 
 end

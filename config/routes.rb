@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   match 'create' => 'organisation#create', :via => :post
   match 'new' => 'organisation#new', :via => :get
   match 'show' => 'organisation#show', :via => :get
-  match 'update' => 'organisation#update', :via => :get
+  match 'edit' => 'organisation#edit', :via => :get
+  match 'update' => 'organisation#update', :via => :patch
   # You can have the root of your site routed with "root"
    root 'organisation#list'
 

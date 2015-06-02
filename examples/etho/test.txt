@@ -1,0 +1,6 @@
+test1      1.78
+test2      56.88
+test3      33.89
+test4      1.78
+test5      56.88
+test6      33.89
