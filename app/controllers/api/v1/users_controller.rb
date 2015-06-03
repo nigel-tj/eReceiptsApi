@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authenticate_with_token!, only: [:update, :destroy]
+  before_action :authenticate_with_token!, only: [:update, :destroy, :create]
   respond_to :json
 
   def show
@@ -33,7 +33,7 @@ class Api::V1::UsersController < ApplicationController
   private
     
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :auth_token)
     end
 
 end

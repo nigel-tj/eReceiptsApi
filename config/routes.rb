@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :users, :only => [:show, :create, :update, :destroy] do
         # this is the line
+        match "login" => "users#show_by_email", :via => :get
         resources :receipts, :only => [:show, :update, :destroy]
       end
       resources :sessions, :only => [:create, :destroy]
