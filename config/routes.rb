@@ -3,7 +3,7 @@ require 'api_constraints'
 Rails.application.routes.draw do
 
   devise_for :admins
-  devise_for :users
+  #devise_for :users
   match 'list' => 'organisation#list', :via => :get
   match 'create' => 'organisation#create', :via => :post
   match 'new' => 'organisation#new', :via => :get
