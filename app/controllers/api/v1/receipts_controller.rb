@@ -12,7 +12,7 @@ class Api::V1::ReceiptsController < ApplicationController
 
   def create
     receipt = Receipt.new(receipt_params)
-    receipt_items = params[:receipt_items_attributes]
+    #receipt_items = params[:receipt_items]
     
     # receipt_items.each do |item|
     #   new_item = ReceiptItem.new()
@@ -20,7 +20,7 @@ class Api::V1::ReceiptsController < ApplicationController
     # end
 
     if receipt.save
-      render json: receipt, status: 201, location: [:api, receipt] 
+      render json: receipt , status: 201, location: [:api, receipt] 
     else
       render json: { errors: receipt.errors }, status: 422
     end
@@ -44,7 +44,7 @@ class Api::V1::ReceiptsController < ApplicationController
   private
 
     def receipt_params
-      params.require(:receipt).permit(:user_id,:receipt_number, :header, :footer, :receipt_items_attributes) 
+      params.require(:receipt).permit(:user_id,:receipt_number, :header, :footer, {:receipt_items => [:name, :price]}) 
     end
 
 end
