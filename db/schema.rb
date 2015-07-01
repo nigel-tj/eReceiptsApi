@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516011025) do
+ActiveRecord::Schema.define(version: 20150701142809) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -53,23 +53,22 @@ ActiveRecord::Schema.define(version: 20150516011025) do
   create_table "receipt_items", force: :cascade do |t|
     t.string   "name"
     t.string   "value"
-    t.integer  "receipt_number"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "receipt_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "receipt_id_id"
   end
 
-  add_index "receipt_items", ["receipt_number"], name: "index_receipt_items_on_receipt_number"
+  add_index "receipt_items", ["receipt_id"], name: "index_receipt_items_on_receipt_id"
+  add_index "receipt_items", ["receipt_id_id"], name: "index_receipt_items_on_receipt_id_id"
 
   create_table "receipts", force: :cascade do |t|
-    t.integer  "receipt_number"
+    t.string   "receipt_number"
     t.text     "header"
     t.text     "footer"
-    t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
-
-  add_index "receipts", ["user_id"], name: "index_receipts_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

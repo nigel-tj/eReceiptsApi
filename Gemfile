@@ -61,7 +61,6 @@ gem 'will_paginate'
 gem 'bootstrap_form'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
-gem 'composite_primary_keys'
 gem 'activesupport'
 
 gem 'dino'
