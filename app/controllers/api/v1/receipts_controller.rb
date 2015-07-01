@@ -14,7 +14,7 @@ class Api::V1::ReceiptsController < ApplicationController
     receipt = Receipt.new(receipt_params)
     
     if receipt.save
-      render json: @receipt , status: 201, location: [:api, receipt] 
+      render json: receipt , status: 201, location: [:api, receipt] 
     else
       render json: { errors: receipt.errors }, status: 422
     end
