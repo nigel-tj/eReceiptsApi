@@ -64,5 +64,6 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'activesupport'
 
 gem 'dino'
-
+gem "less-rails"
+gem 'therubyracer'
 
