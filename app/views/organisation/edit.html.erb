@@ -1,10 +1,19 @@
-<h1>Edit organisation</h1>
-
-<%= bootstrap_form_for(@organisation, :url => { :action => "update", :id => @organisation.id }) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :email %>
-  <%= f.text_field :contact %>
-  <%= f.submit "Edit" %>
-<% end %>
-
-
+<div class="col-md-4 col-md-offset-4">
+  
+  <%= form_for(@organisation, :url => { :action => "update" }, :html => { :role => 'form'}) do |f| %>
+  <h1>Edit organisation</h1>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :contact %>
+    <%= f.text_field :contact, class: 'form-control' %>
+  </div>
+  <%= f.submit "Edit", :class => 'btn btn-primary' %>
+  <% end %>  
+</div>
