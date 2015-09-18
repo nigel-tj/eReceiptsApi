@@ -46,7 +46,7 @@ class OrganisationController < ApplicationController
 
   def receipts
     @org = Organisation.find_by_id(params[:id])
-    @receipts = Receipt.find_by( :token => @org.token)
+    @receipts = Receipt.where(:token => @org.token)
   end
 
     private
