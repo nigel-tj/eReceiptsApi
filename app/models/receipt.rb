@@ -4,5 +4,5 @@ class Receipt < ActiveRecord::Base
   validates :receipt_number, numericality: { greater_than_or_equal_to: 0 },
                     presence: true
   accepts_nested_attributes_for :receipt_items, :allow_destroy => true
-
+  belongs_to :organisation
 end

@@ -6,7 +6,7 @@ class OrganisationController < ApplicationController
   end
 
   def show
-    @organisation = Organisation.find(params[:id])
+    @organisation = Organisation.find_by_id(params[:id])
     redirect_to :action => 'show', :id => @organisation.id
   end
 
@@ -44,8 +44,9 @@ class OrganisationController < ApplicationController
     end
   end
 
-  def show_receipts
-    @receipt = Receipt.find(params[:id])
+  def receipts
+    @org = Organisation.find_by_id(params[:id])
+    @receipts = Receipt.find_by( :token => @org.token)
   end
 
     private

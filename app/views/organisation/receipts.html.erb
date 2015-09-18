@@ -1,0 +1,5 @@
+<h1>All receipts for <%= @org.name %></h1>
+
+<% @receipts.each do |receipt| %>
+  <%= receipt.id  -%>
+<% end %>

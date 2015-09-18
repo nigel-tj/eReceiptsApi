@@ -38,7 +38,7 @@ class Api::V1::ReceiptsController < ApplicationController
   private
 
     def receipt_params
-      params.require(:receipt).permit(:user_id,:receipt_number, :header, :footer, {:receipt_items_attributes => [:name, :value]}) 
+      params.require(:receipt).permit(:token,:receipt_number, :header, :footer, {:receipt_items_attributes => [:name, :value]}) 
     end
 
 end
