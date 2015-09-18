@@ -4,7 +4,9 @@
 <br/><br/>
   Receipt Number: <%= receipt.receipt_number  -%> <br/> 
   <%= receipt.header  -%> <br/>
-
+  <% receipt.receipt_items.each do |item| %>
+    <%= item.name %> <%= item.value %> <br/>  
+  <% end %>
   <%= receipt.footer  -%> <br/>
 <br/><br/>  
 <% end %>
