@@ -47,6 +47,7 @@ class OrganisationController < ApplicationController
   def receipts
     @org = Organisation.find_by_id(params[:id])
     @receipts = Receipt.where(:token => @org.token)
+    # @receipt_items = ReceiptItem.where(:id => )
   end
 
     private
