@@ -1,12 +1,14 @@
 <h1>All receipts for <%= @org.name %></h1>
 
-<% @receipts.each do |receipt| %>
-<br/><br/>
-  Receipt Number: <%= receipt.receipt_number  -%> <br/> 
-  <%= receipt.header  -%> <br/>
-  <% receipt.receipt_items.each do |item| %>
+<%- if @receipts.any? %>
+  <% @receipts.each do |receipt| %>
+  <br/><br/>
+    Receipt Number: <%= receipt.receipt_number  -%> <br/> 
+    <%= receipt.header  -%> <br/>
+    <% receipt.receipt_items.each do |item| %>
     <%= item.name %> <%= item.value %> <br/>  
+    <% end %>
+    <%= receipt.footer  -%> <br/>
+   <br/><br/>  
   <% end %>
-  <%= receipt.footer  -%> <br/>
-<br/><br/>  
 <% end %>
