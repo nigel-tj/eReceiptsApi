@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   match 'edit' => 'organisation#edit', :via => :get
   match 'update' => 'organisation#update', :via => :patch
   match 'receipts' => 'organisation#receipts', :via => :get
+  match 'index' => 'organisation#list', :via => :get
   # You can have the root of your site routed with "root"
    root 'organisation#list'
 
