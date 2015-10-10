@@ -1,14 +1,17 @@
 <h1>All receipts for <%= @org.name %></h1>
-
-<%- if @receipts.any? %>
-  <% @receipts.each do |receipt| %>
-  <br/><br/>
-    Receipt Number: <%= receipt.receipt_number  -%> <br/> 
-    <%= receipt.header  -%> <br/>
-    <% receipt.receipt_items.each do |item| %>
-    <%= item.name %> <%= item.value %> <br/>  
+<div class="col-md-6">
+  <%- if @receipts.any? %>
+    <% @receipts.each do |receipt| %>
+      <p>Receipt Number: <%= receipt.receipt_number  -%> </p> 
+      <p><%= receipt.header  -%> </p>
+      <div class="col-md-12">
+        <% receipt.receipt_items.each do |item| %>      
+          <div class="col-md-6"><%= item.name %></div> 
+          <div class="col-md-6"><%= item.value %></div>  
+        <% end %>
+      </div>
+      <p><%= receipt.footer  -%> </p>
     <% end %>
-    <%= receipt.footer  -%> <br/>
-   <br/><br/>  
   <% end %>
-<% end %>
+</div>
+
