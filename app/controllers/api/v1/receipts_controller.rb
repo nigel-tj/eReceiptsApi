@@ -6,8 +6,13 @@ class Api::V1::ReceiptsController < ApplicationController
     #respond_with Receipt.all  
   end
 
-  def show
-    #respond_with Receipt.find_by_user_id(params[:user_id])   
+  def receipt
+    receipt = Receipt.where(:token => params[:token],:receipt_number => params[:receipt_id]).first
+    if receipt
+      render json: receipt , status: 201, location: [:api, receipt], include: :receipt_items, except: [:updated_at,:receipt_id,:id,:receipt_id_id]  
+    else
+      render json: { errors: receipt.errors }, status: 422
+    end
   end
 
   def create
