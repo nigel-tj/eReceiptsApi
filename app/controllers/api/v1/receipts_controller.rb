@@ -25,15 +25,6 @@ class Api::V1::ReceiptsController < ApplicationController
     end
   end
 
-  # def update
-  #   receipt = receipts.find_by_id(params[:id])
-  #   if receipt.update(receipt_params)
-  #     render json: receipt, status: 200, location: [:api, receipt] 
-  #   else
-  #     render json: { errors: receipt.errors }, status: 422
-  #   end
-  # end
-
   def destroy
     receipt = current_user.receipts.find_by_id(params[:id]) 
     receipt.destroy
