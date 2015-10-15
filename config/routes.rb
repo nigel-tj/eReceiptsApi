@@ -18,14 +18,14 @@ Rails.application.routes.draw do
   # Example resource route within a namespace:
   namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'  do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
-      resources :users, :only => [:show, :create, :update, :destroy] do
+      resources :users, :only => [:show, :create, :update, :destroy, :login] do
         # this is the line
-        match "login" => "users#show_by_email", :via => :get
-        resources :receipts, :only => [:show, :update, :destroy, :create]
+        match "login" => "users#login", :via => :post
       end
       resources :sessions, :only => [:create, :destroy]
       resources :receipts do
         get '/token/:token' => 'receipts#receipt' 
+        get '/all/:token' => 'receipts#receipts' 
       end
     end
   end

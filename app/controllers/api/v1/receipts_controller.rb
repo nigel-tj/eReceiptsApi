@@ -15,11 +15,15 @@ class Api::V1::ReceiptsController < ApplicationController
     end
   end
 
+  def receipts
+    #receipts = Receipt.where(:token => params[:token]).all
+    #render json: receipts , status: 201, location: [:api, receipts], include: :receipt_items, except: [:updated_at,:receipt_id,:id,:receipt_id_id]  
+  end
   def create
     receipt = Receipt.new(receipt_params)
     
     if receipt.save
-      render json: receipt , status: 201, location: [:api, receipt] 
+      render json: receipt , status: 201, location: [:api, receipt], include: :receipt_items, except: [:updated_at,:receipt_id,:id,:receipt_id_id] 
     else
       render json: { errors: receipt.errors }, status: 422
     end
