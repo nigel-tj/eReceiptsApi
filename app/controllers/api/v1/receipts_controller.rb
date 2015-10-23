@@ -1,5 +1,5 @@
 class Api::V1::ReceiptsController < ApplicationController
-  before_action only: [:create, :update, :destroy]
+  #before_action only: [:create, :update, :destroy]
   respond_to :json
 
   def index
@@ -7,7 +7,7 @@ class Api::V1::ReceiptsController < ApplicationController
   end
 
   def receipt
-    receipt = Receipt.where(:token => params[:token],:receipt_number => params[:receipt_id]).first
+    receipt = Receipt.where(:receipt_number => params[:receipt_id]).first
     if receipt
       render json: receipt , status: 201, location: [:api, receipt], include: :receipt_items, except: [:updated_at,:receipt_id,:id,:receipt_id_id]  
     else
