@@ -16,12 +16,12 @@ class Api::V1::ReceiptsController < ApplicationController
   end
 
   def receipts
-    @receipts = {}
+    @receipts = Array.new
     @receipt_ids = params[:fetch_receipts]
    
     @receipt_ids.each do |receipt_id|
       receipt = Receipt.where(:receipt_number => receipt_id)
-      @receipts.push(receipt_id, receipt) 
+      @receipts = {receipt_id => receipt.to_json} 
     end
     
     render json: @receipts , status: 201
