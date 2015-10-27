@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resources :sessions, :only => [:create, :destroy]
       resources :receipts do
         get '/token/:token' => 'receipts#receipt' 
-        get '/all/:token' => 'receipts#receipts' 
+        post 'fetch_receipts' => 'receipts#receipts' 
       end
     end
   end

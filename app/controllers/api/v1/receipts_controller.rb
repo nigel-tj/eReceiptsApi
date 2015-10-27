@@ -7,7 +7,7 @@ class Api::V1::ReceiptsController < ApplicationController
   end
 
   def receipt
-    receipt = Receipt.where(:receipt_number => params[:receipt_id]).first
+    receipt = Receipt.where(:receipt_number => params[:receipt_id])
     if receipt
       render json: receipt , status: 201, location: [:api, receipt], include: :receipt_items, except: [:updated_at,:receipt_id,:id,:receipt_id_id]  
     else
@@ -16,9 +16,18 @@ class Api::V1::ReceiptsController < ApplicationController
   end
 
   def receipts
-    #receipts = Receipt.where(:token => params[:token]).all
-    #render json: receipts , status: 201, location: [:api, receipts], include: :receipt_items, except: [:updated_at,:receipt_id,:id,:receipt_id_id]  
+    @receipts = {}
+    @receipt_ids = params[:fetch_receipts]
+   
+    @receipt_ids.each do |receipt_id|
+      receipt = Receipt.where(:receipt_number => receipt_id)
+      @receipts.push(receipt_id, receipt) 
+    end
+    
+    render json: @receipts , status: 201
+    
   end
+
   def create
     receipt = Receipt.new(receipt_params)
     
@@ -38,7 +47,7 @@ class Api::V1::ReceiptsController < ApplicationController
   private
 
     def receipt_params
-      params.require(:receipt).permit(:token,:receipt_number, :header, :footer, {:receipt_items_attributes => [:name, :value]}) 
+      params.permit(:token,:receipt_number, :header, :footer, {:receipt_items_attributes => [:name, :value]}, {:fetch_receipts_attributes => [:receipt_number]}) 
     end
 
 end
