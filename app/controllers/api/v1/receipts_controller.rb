@@ -38,6 +38,14 @@ class Api::V1::ReceiptsController < ApplicationController
     end
   end
 
+  def daily_summary
+
+  end
+
+  def monthly_summary
+
+  end
+
   def destroy
     receipt = current_user.receipts.find_by_id(params[:id]) 
     receipt.destroy
